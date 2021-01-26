@@ -3,21 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   context: path.join(__dirname, 'src'),
-  entry: './client.js',
+  entry: './app.js',
   module: {
     rules: [{
-      test: /\.jsx?$/,
+      test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       use: [{
         loader: 'babel-loader',
         options: {
           plugins: [
-            'react-html-attrs',
             [require('@babel/plugin-proposal-decorators'), { legacy: true }],
             '@babel/proposal-class-properties'
           ],
           presets: [
-            '@babel/preset-react',
             ['@babel/preset-env',
               {
                 targets: {
@@ -46,7 +44,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     host: '0.0.0.0',
-    port: 3001,
+    port: 3000,
     contentBase: path.join(__dirname, 'public')
   },
   plugins: [
